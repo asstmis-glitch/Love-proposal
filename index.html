@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Question ❤️</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
+  font-family: Georgia, serif;
+  text-align: center;
+  color: #8b174b;
+  overflow-x: hidden;
+}
+
+.card {
+  background: rgba(255,255,255,.94);
+  width: 90%;
+  max-width: 480px;
+  padding: 40px 20px;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px #8c174b55;
+}
+
+.heart {
+  font-size: 65px;
+  animation: beat 1s infinite;
+}
+
+@keyframes beat {
+  50% { transform: scale(1.2); }
+}
+
+h1 { font-size: 32px; }
+
+p {
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  margin: 10px;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.yes {
+  background: #ed3675;
+  color: white;
+}
+
+.no {
+  background: #eee;
+  color: #444;
+}
+
+#answer {
+  font-size: 23px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+  <div class="heart">❤️</div>
+
+  <h1>Hey, My Special Person!</h1>
+
+  <p>
+    I have something special to tell you...
+    <br><br>
+    Every time I think about you,
+    my world becomes a little more beautiful.
+    <br><br>
+    You make me smile in ways I cannot explain.
+  </p>
+
+  <h1>Will You Be Mine? 💕</h1>
+
+  <button class="yes" onclick="yesAnswer()">
+    YES ❤️
+  </button>
+
+  <button class="no" onclick="noAnswer()">
+    NO 🙈
+  </button>
+
+  <div id="answer"></div>
+</div>
+
+<script>
+function yesAnswer() {
+  document.getElementById("answer").innerHTML =
+  "You just made my heart the happiest! ❤️🥰";
+}
+
+function noAnswer() {
+  document.getElementById("answer").innerHTML =
+  "That's okay! Your happiness matters to me. ❤️";
+}
+</script>
+
+</body>
+</html>
