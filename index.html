@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Special Question ❤️</title>
+<title>Rimpa ❤️ Parth</title>
 
 <style>
 * { box-sizing: border-box; }
@@ -16,19 +16,21 @@ body {
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
-  font-family: Georgia, serif;
+  font-family: Georgia,serif;
   text-align: center;
-  color: #8b174b;
-  overflow-x: hidden;
+  color: #a32258;
+  overflow: hidden;
 }
 
 .card {
-  background: rgba(255,255,255,.94);
+  background: #fffafa;
   width: 90%;
   max-width: 480px;
-  padding: 40px 20px;
+  padding: 35px 22px;
   border-radius: 25px;
-  box-shadow: 0 15px 40px #8c174b55;
+  box-shadow: 0 12px 40px #8c174b55;
+  position: relative;
+  z-index: 2;
 }
 
 .heart {
@@ -40,7 +42,7 @@ body {
   50% { transform: scale(1.2); }
 }
 
-h1 { font-size: 32px; }
+h1 { font-size: 34px; }
 
 p {
   font-size: 18px;
@@ -50,8 +52,8 @@ p {
 button {
   border: none;
   border-radius: 30px;
-  padding: 14px 28px;
-  margin: 10px;
+  padding: 14px 27px;
+  margin: 9px;
   font-size: 17px;
   cursor: pointer;
 }
@@ -67,9 +69,24 @@ button {
 }
 
 #answer {
-  font-size: 23px;
+  font-size: 22px;
   font-weight: bold;
   margin-top: 20px;
+}
+
+.floating {
+  position: fixed;
+  bottom: -30px;
+  animation: floatUp 7s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 </style>
 </head>
@@ -79,18 +96,25 @@ button {
 <div class="card">
   <div class="heart">❤️</div>
 
-  <h1>Hey, My Special Person!</h1>
+  <p>For My Favourite Person</p>
+
+  <h1>Hey Parth! 🥰</h1>
 
   <p>
     I have something special to tell you...
     <br><br>
     Every time I think about you,
-    my world becomes a little more beautiful.
+    I smile without even knowing why.
     <br><br>
-    You make me smile in ways I cannot explain.
+    You make my ordinary days
+    feel extraordinary.
+    <br><br>
+    I don't know what the future holds,
+    but I would love to make beautiful
+    memories with you.
   </p>
 
-  <h1>Will You Be Mine? 💕</h1>
+  <h1>Parth, Will You Be Mine? 💍</h1>
 
   <button class="yes" onclick="yesAnswer()">
     YES ❤️
@@ -101,19 +125,35 @@ button {
   </button>
 
   <div id="answer"></div>
+
+  <p style="margin-top:25px">
+    With lots of love,<br>
+    <b>Yours, Rimpa ❤️</b>
+  </p>
 </div>
 
 <script>
 function yesAnswer() {
   document.getElementById("answer").innerHTML =
-  "You just made my heart the happiest! ❤️🥰";
+  "YAYYYY! ❤️🥹 Parth, you made Rimpa the happiest person! I love you! 💕";
 }
 
 function noAnswer() {
   document.getElementById("answer").innerHTML =
-  "That's okay! Your happiness matters to me. ❤️";
+  "It's okay, Parth ❤️ Your happiness matters to me. 🥰";
 }
+
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "floating";
+  heart.innerHTML = ["❤️","💕","💖","💗"][Math.floor(Math.random()*4)];
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (20+Math.random()*20) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(),7000);
+},500);
 </script>
 
 </body>
 </html>
+
