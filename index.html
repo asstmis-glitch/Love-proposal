@@ -4,88 +4,387 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rimpa ❤️ Parth</title>
+<meta name="theme-color" content="#f8b8cf">
+<title>Rimpa ❤️ Parth | Forever Begins</title>
 
 <style>
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --pink: #ef75a5;
+  --deep: #a83268;
+  --cream: #fff6f5;
+  --gold: #f5c86b;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg,#ff758c,#ff7eb3,#ffc3a0);
-  font-family: Georgia,serif;
-  text-align: center;
-  color: #a32258;
-  overflow: hidden;
-}
-
-.card {
-  background: #fffafa;
-  width: 90%;
-  max-width: 480px;
-  padding: 35px 22px;
-  border-radius: 25px;
-  box-shadow: 0 12px 40px #8c174b55;
-  position: relative;
-  z-index: 2;
-}
-
-.heart {
-  font-size: 65px;
-  animation: beat 1s infinite;
-}
-
-@keyframes beat {
-  50% { transform: scale(1.2); }
-}
-
-h1 { font-size: 34px; }
-
-p {
-  font-size: 18px;
-  line-height: 1.7;
+  font-family: Georgia, serif;
+  color: #873454;
+  background: linear-gradient(135deg,#ffe3ed,#f8b8cf,#fce6d7);
+  overflow-x: hidden;
 }
 
 button {
-  border: none;
-  border-radius: 30px;
-  padding: 14px 27px;
-  margin: 9px;
-  font-size: 17px;
+  font-family: inherit;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.yes {
-  background: #ed3675;
+.scene {
+  display: none;
+  min-height: 100vh;
+  width: 100%;
+  padding: 25px 15px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.scene.active {
+  display: flex;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+h1 {
+  font-size: clamp(30px,7vw,48px);
+  margin: 12px 0;
+}
+
+h2 {
+  font-size: clamp(23px,5vw,34px);
+}
+
+p {
+  line-height: 1.7;
+  font-size: 17px;
+}
+
+.romantic-text {
+  color: #9d315e;
+  text-shadow: 0 2px 8px #ffffff;
+}
+
+.primary-btn {
+  border: 0;
+  padding: 15px 30px;
+  border-radius: 40px;
+  color: white;
+  font-size: 18px;
+  background: linear-gradient(135deg,#e94e91,#bc3977);
+  box-shadow: 0 8px 20px #9c326655;
+  transition: transform .25s;
+  z-index: 5;
+}
+
+.primary-btn:hover {
+  transform: scale(1.07);
+}
+
+.music-btn {
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  z-index: 30;
+  border: 1px solid #ffffffaa;
+  border-radius: 30px;
+  background: #fff8;
+  padding: 10px 14px;
+  color: #9d315e;
+}
+
+/* FLOATING HEARTS */
+
+.floating-heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatHeart 8s linear forwards;
+}
+
+@keyframes floatHeart {
+  to {
+    transform: translateY(-115vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* SCENE 1: DOORS */
+
+.door-stage {
+  width: min(92vw,620px);
+  height: min(65vh,480px);
+  min-height: 350px;
+  position: relative;
+  border: 8px solid #e8b66e;
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle,#fff5d9,#f3a9c5 70%,#b94b7a);
+  box-shadow: 0 18px 45px #8b315b55;
+  margin: 20px 0;
+}
+
+.door-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  color: #8c3157;
+}
+
+.door-message h2 {
+  font-size: clamp(22px,5vw,38px);
+  text-shadow: 0 2px 8px white;
+}
+
+.door-message .small-heart {
+  font-size: 65px;
+  animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.2); }
+}
+
+.door {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  z-index: 4;
+  background:
+    linear-gradient(90deg,#b85b7d,#f1b0c4 40%,#d783a1);
+  border: 5px solid #f4d49b;
+  box-shadow: inset 0 0 25px #7e274b66;
+  transition: transform 2.2s cubic-bezier(.65,0,.25,1);
+}
+
+.door::before {
+  content: "♥";
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 45px;
+  color: #ffdfb1;
+  text-shadow: 0 2px 8px #8d3657;
+}
+
+.door::after {
+  content: "✿";
+  position: absolute;
+  left: 50%;
+  top: 48%;
+  transform: translateX(-50%);
+  font-size: 70px;
+  color: #ffe6c6;
+}
+
+.door.left {
+  left: 0;
+  transform-origin: left center;
+  border-radius: 8px 0 0 8px;
+}
+
+.door.right {
+  right: 0;
+  transform-origin: right center;
+  border-radius: 0 8px 8px 0;
+}
+
+.door-stage.open .door.left {
+  transform: perspective(900px) rotateY(-105deg);
+}
+
+.door-stage.open .door.right {
+  transform: perspective(900px) rotateY(105deg);
+}
+
+.knob {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  width: 15px;
+  height: 15px;
+  background: radial-gradient(circle at 30% 30%,#fff4c5,#b7792d);
+  border-radius: 50%;
+  box-shadow: 0 2px 5px #633;
+}
+
+.door.right .knob {
+  left: 15px;
+  right: auto;
+}
+
+/* SCENE 2: PROPOSAL */
+
+.proposal-scene {
+  background:
+    radial-gradient(ellipse at 50% 65%,#fff1d9,#f9c4d7 55%,#e9a4c1);
+}
+
+.stage {
+  width: min(96vw,850px);
+  position: relative;
+  padding: 15px 5px;
+}
+
+.proposal-title {
+  color: #a12f60;
+  text-shadow: 0 3px 8px white;
+}
+
+.couple {
+  width: 100%;
+  max-width: 760px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 12px 10px #9b426044);
+}
+
+.couple .girl {
+  transform-origin: 300px 380px;
+  animation: girlAppear 1.3s ease both;
+}
+
+.couple .boy {
+  transform-origin: 600px 370px;
+  animation: boyAppear 1.3s ease both;
+}
+
+@keyframes girlAppear {
+  from { opacity: 0; transform: translateY(35px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes boyAppear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ring {
+  animation: ringGlow 1.5s infinite alternate;
+}
+
+@keyframes ringGlow {
+  to {
+    filter: drop-shadow(0 0 12px #ffe15a);
+  }
+}
+
+.proposal-message {
+  background: #fff8f4dd;
+  border: 1px solid #e9a7be;
+  border-radius: 24px;
+  padding: 20px;
+  max-width: 570px;
+  width: 95%;
+  margin: 5px auto 15px;
+  box-shadow: 0 8px 25px #a54b6a22;
+}
+
+.proposal-message h2 {
+  margin: 5px;
+}
+
+.buttons-area {
+  height: 90px;
+  width: min(95vw,400px);
+  margin: 10px auto;
+  position: relative;
+}
+
+.choice-btn {
+  position: absolute;
+  top: 12px;
+  min-width: 115px;
+  border: 0;
+  border-radius: 30px;
+  padding: 14px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 6px 15px #82304c33;
+}
+
+.yes-btn {
+  left: 8%;
+  background: linear-gradient(135deg,#ef4c91,#c52c72);
   color: white;
 }
 
-.no {
-  background: #eee;
-  color: #444;
+.no-btn {
+  left: 58%;
+  background: #fff;
+  color: #ad4770;
+  border: 2px solid #e9a3bf;
+  transition: left .25s ease, top .25s ease;
 }
 
-#answer {
-  font-size: 22px;
-  font-weight: bold;
-  margin-top: 20px;
+#noMessage {
+  min-height: 30px;
+  font-size: 15px;
+  color: #9a3760;
 }
 
-.floating {
+/* CELEBRATION */
+
+.celebration {
+  background:
+    radial-gradient(circle at center,#fff8df,#ffc6db,#ef83ad);
+}
+
+.celebration h1 {
+  color: #b52d6c;
+  text-shadow: 0 3px 8px white;
+}
+
+.big-heart {
+  font-size: 100px;
+  animation: heartbeat .8s infinite;
+}
+
+.confetti {
   position: fixed;
-  bottom: -30px;
-  animation: floatUp 7s linear infinite;
-  z-index: 1;
+  top: -30px;
+  z-index: 10;
   pointer-events: none;
+  animation: fall 4s linear forwards;
 }
 
-@keyframes floatUp {
+@keyframes fall {
   to {
-    transform: translateY(-110vh) rotate(360deg);
+    transform: translateY(115vh) rotate(720deg);
     opacity: 0;
+  }
+}
+
+@media(max-width:500px) {
+  .door-stage { min-height: 330px; }
+  .proposal-message { padding: 14px; }
+  .choice-btn { min-width: 105px; padding: 13px 15px; }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
   }
 }
 </style>
@@ -93,67 +392,579 @@ button {
 
 <body>
 
-<div class="card">
-  <div class="heart">❤️</div>
+<button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+  ♫ Music OFF
+</button>
 
-  <p>For My Favourite Person</p>
+<!-- SCENE 1: OPEN THE DOORS -->
 
-  <h1>Hey Parth! 🥰</h1>
+<section class="scene active" id="welcome">
+
+  <p class="romantic-text">A little surprise made with love...</p>
+
+  <h1 class="romantic-text">Hey Parth! ❤️</h1>
+
+  <h2 class="romantic-text">
+    Do you wanna see what's inside? 🥰
+  </h2>
+
+  <div class="door-stage" id="doorStage">
+
+    <div class="door-message">
+      <div class="small-heart">💗</div>
+      <h2>Something Special Is Waiting For You</h2>
+      <p>Made with love by Rimpa</p>
+    </div>
+
+    <div class="door left">
+      <div class="knob"></div>
+    </div>
+
+    <div class="door right">
+      <div class="knob"></div>
+    </div>
+
+  </div>
+
+  <button class="primary-btn" onclick="openDoors()">
+    OPEN YOUR SURPRISE ❤️
+  </button>
+
+  <p>Just for you, Parth 💕</p>
+
+</section>
+
+
+<!-- SCENE 2: RIMPA PROPOSES TO PARTH -->
+
+<section class="scene proposal-scene" id="proposal">
+
+  <div class="stage">
+
+    <p>Something straight from my heart...</p>
+
+    <h1 class="proposal-title">
+      Parth, This Is For You ❤️
+    </h1>
+
+    <!-- ORIGINAL CARTOON COUPLE ILLUSTRATION -->
+
+    <svg class="couple" viewBox="0 0 800 490"
+         xmlns="http://www.w3.org/2000/svg"
+         role="img" aria-label="A girl kneeling with a ring and a boy standing">
+
+      <defs>
+        <linearGradient id="dress" x2="1" y2="1">
+          <stop stop-color="#ffd0e1"/>
+          <stop offset="1" stop-color="#e95796"/>
+        </linearGradient>
+
+        <linearGradient id="skin" x2="1" y2="1">
+          <stop stop-color="#ffdfc8"/>
+          <stop offset="1" stop-color="#e9aa8c"/>
+        </linearGradient>
+
+        <linearGradient id="hair" x2="1" y2="1">
+          <stop stop-color="#59302c"/>
+          <stop offset="1" stop-color="#21151b"/>
+        </linearGradient>
+
+        <linearGradient id="boyShirt" x2="1" y2="1">
+          <stop stop-color="#a5c6ed"/>
+          <stop offset="1" stop-color="#557cae"/>
+        </linearGradient>
+
+        <radialGradient id="glow">
+          <stop stop-color="#fff8c9"/>
+          <stop offset="1" stop-color="#ffc4d8" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- ROMANTIC BACKGROUND -->
+
+      <ellipse cx="400" cy="420" rx="360" ry="38"
+               fill="#ffffff" opacity=".4"/>
+      <circle cx="400" cy="200" r="220" fill="url(#glow)"/>
+
+      <g fill="#ffffff" opacity=".8">
+        <path d="M100 105 l7 16 16 7 -16 7 -7 16 -7 -16 -16 -7 16 -7z"/>
+        <path d="M700 140 l6 13 13 6 -13 6 -6 13 -6 -13 -13 -6 13 -6z"/>
+        <path d="M405 55 l5 12 12 5 -12 5 -5 12 -5 -12 -12 -5 12 -5z"/>
+      </g>
+
+      <!-- GIRL: RIMPA KNEELING -->
+
+      <g class="girl">
+
+        <!-- Hair behind head -->
+        <path d="M178 120
+                 Q150 35 225 30
+                 Q320 15 330 112
+                 Q350 190 300 225
+                 L205 220
+                 Q160 180 178 120"
+              fill="url(#hair)"/>
+
+        <!-- Kneeling back leg -->
+        <path d="M270 320 Q220 345 195 385
+                 Q180 405 225 414
+                 L300 412 Q335 405 320 380
+                 L300 335Z"
+              fill="url(#skin)"/>
+
+        <!-- Pink dress body and skirt -->
+        <path d="M235 195
+                 Q190 190 183 245
+                 Q160 310 115 360
+                 Q155 390 280 378
+                 Q340 365 365 320
+                 Q330 265 305 218
+                 Q275 185 235 195"
+              fill="url(#dress)" stroke="#df6d9d" stroke-width="3"/>
+
+        <!-- Dress folds -->
+        <path d="M225 240 Q200 315 175 360
+                 M265 250 Q260 320 255 370
+                 M290 245 Q320 300 315 350"
+              fill="none" stroke="#ffe2ee" stroke-width="5"
+              stroke-linecap="round" opacity=".7"/>
+
+        <!-- Neck -->
+        <path d="M228 170 L232 210 L270 210 L267 165Z"
+              fill="url(#skin)"/>
+
+        <!-- Face -->
+        <ellipse cx="245" cy="125" rx="61" ry="72"
+                 fill="url(#skin)"/>
+
+        <!-- Hair top -->
+        <path d="M185 130
+                 Q165 44 236 39
+                 Q305 35 308 100
+                 Q280 72 258 75
+                 Q225 110 185 130"
+              fill="url(#hair)"/>
+
+        <!-- Long hair strands -->
+        <path d="M186 110 Q150 195 192 255
+                 Q205 230 210 190"
+              fill="none" stroke="#44232a" stroke-width="23"
+              stroke-linecap="round"/>
+
+        <path d="M290 102 Q330 165 290 225"
+              fill="none" stroke="#44232a" stroke-width="18"
+              stroke-linecap="round"/>
+
+        <!-- Eyes -->
+        <ellipse cx="223" cy="130" rx="5" ry="8" fill="#4b2929"/>
+        <ellipse cx="265" cy="130" rx="5" ry="8" fill="#4b2929"/>
+
+        <!-- Blush -->
+        <ellipse cx="207" cy="148" rx="12" ry="7" fill="#ee879a" opacity=".5"/>
+        <ellipse cx="278" cy="148" rx="12" ry="7" fill="#ee879a" opacity=".5"/>
+
+        <!-- Smile -->
+        <path d="M230 157 Q245 170 260 157"
+              fill="none" stroke="#a64e54" stroke-width="3"
+              stroke-linecap="round"/>
+
+        <!-- Raised proposing arm -->
+        <path d="M280 225 Q320 235 360 200
+                 Q380 180 397 192"
+              fill="none" stroke="url(#skin)" stroke-width="22"
+              stroke-linecap="round"/>
+
+        <!-- Ring -->
+        <g class="ring">
+          <circle cx="403" cy="188" r="12"
+                  fill="none" stroke="#e4b64c" stroke-width="5"/>
+          <path d="M395 174 L403 161 L411 174Z"
+                fill="#ffffff" stroke="#e4b64c" stroke-width="2"/>
+          <circle cx="403" cy="161" r="5" fill="#fff8bc"/>
+        </g>
+
+        <!-- Other arm -->
+        <path d="M205 225 Q170 260 175 292"
+              fill="none" stroke="url(#skin)" stroke-width="20"
+              stroke-linecap="round"/>
+
+        <!-- Kneeling shoe -->
+        <path d="M195 397 Q170 405 165 419
+                 Q190 432 235 420"
+              fill="#b94c78"/>
+
+      </g>
+
+
+      <!-- BOY: PARTH STANDING -->
+
+      <g class="boy">
+
+        <!-- Legs -->
+        <path d="M520 285 L520 393 L550 393 L570 290Z"
+              fill="#344b6a"/>
+        <path d="M575 285 L595 390 L625 390 L620 280Z"
+              fill="#344b6a"/>
+
+        <!-- Shoes -->
+        <path d="M515 390 Q500 400 510 413
+                 L560 413 Q568 400 548 390Z"
+              fill="#39303a"/>
+        <path d="M590 389 Q585 405 605 413
+                 L650 413 Q650 397 625 389Z"
+              fill="#39303a"/>
+
+        <!-- Shirt -->
+        <path d="M515 145 Q555 125 600 145
+                 L630 280 Q575 305 500 280Z"
+              fill="url(#boyShirt)"/>
+
+        <!-- Shirt collar -->
+        <path d="M540 140 L565 170 L585 140"
+              fill="#e9f2ff" stroke="#557cae" stroke-width="3"/>
+
+        <!-- Neck -->
+        <path d="M550 110 L550 150 L582 150 L580 105Z"
+              fill="url(#skin)"/>
+
+        <!-- Face -->
+        <ellipse cx="567" cy="88" rx="54" ry="62"
+                 fill="url(#skin)"/>
+
+        <!-- Hair -->
+        <path d="M516 85 Q500 15 563 20
+                 Q630 10 622 87
+                 Q600 55 582 60
+                 Q548 73 516 85"
+              fill="url(#hair)"/>
+
+        <!-- Eyes -->
+        <ellipse cx="548" cy="93" rx="5" ry="7" fill="#37242a"/>
+        <ellipse cx="585" cy="93" rx="5" ry="7" fill="#37242a"/>
+
+        <!-- Smile -->
+        <path d="M550 117 Q568 132 585 116"
+              fill="none" stroke="#a64e54" stroke-width="3"
+              stroke-linecap="round"/>
+
+        <!-- Arms -->
+        <path d="M510 170 Q475 205 480 260"
+              fill="none" stroke="url(#skin)" stroke-width="21"
+              stroke-linecap="round"/>
+
+        <path d="M610 165 Q642 205 630 258"
+              fill="none" stroke="url(#skin)" stroke-width="21"
+              stroke-linecap="round"/>
+
+      </g>
+
+      <!-- ROSES -->
+      <g fill="#e74e87">
+        <circle cx="100" cy="390" r="13"/>
+        <circle cx="115" cy="384" r="10"/>
+        <circle cx="700" cy="390" r="13"/>
+        <circle cx="715" cy="382" r="10"/>
+      </g>
+
+      <g fill="#518c62">
+        <path d="M100 405 Q75 390 65 410 Q90 415 100 405"/>
+        <path d="M700 405 Q725 390 735 410 Q710 415 700 405"/>
+      </g>
+
+    </svg>
+
+    <div class="proposal-message">
+
+      <h2>Parth, My Love ❤️</h2>
+
+      <p>
+        I don't need a perfect fairy tale.
+        I just want a beautiful life with you.
+        <br><br>
+        I want to laugh with you, grow with you,
+        and make a million beautiful memories.
+      </p>
+
+      <h2>Will You Spend Forever With Me? 💍</h2>
+
+      <p><b>Will you be mine forever?</b></p>
+
+      <div class="buttons-area" id="buttonsArea">
+
+        <button class="choice-btn yes-btn"
+                onclick="sayYes()">
+          YES ❤️
+        </button>
+
+        <button class="choice-btn no-btn"
+                id="noBtn"
+                onclick="sayNo()">
+          NO 🙈
+        </button>
+
+      </div>
+
+      <div id="noMessage"></div>
+
+      <p><b>Forever yours, Rimpa 💗</b></p>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- SCENE 3: YES CELEBRATION -->
+
+<section class="scene celebration" id="celebration">
+
+  <div class="big-heart">💖</div>
+
+  <h1>HE SAID YES!!! 😍</h1>
+
+  <h2>Rimpa ❤️ Parth</h2>
 
   <p>
-    I have something special to tell you...
+    You just made me the happiest girl
+    in the whole world!
     <br><br>
-    Every time I think about you,
-    I smile without even knowing why.
+    Here's to our beautiful journey,
+    endless laughter, countless memories,
+    and a lifetime of love.
     <br><br>
-    You make my ordinary days
-    feel extraordinary.
-    <br><br>
-    I don't know what the future holds,
-    but I would love to make beautiful
-    memories with you.
+    I choose you today, tomorrow
+    and forever.
   </p>
 
-  <h1>Parth, Will You Be Mine? 💍</h1>
+  <h1>LOVE YOU PARTH! 💋</h1>
 
-  <button class="yes" onclick="yesAnswer()">
-    YES ❤️
+  <p>Forever & Always — Rimpa ❤️</p>
+
+  <button class="primary-btn" onclick="makeMoreHearts()">
+    MORE LOVE 💕
   </button>
 
-  <button class="no" onclick="noAnswer()">
-    NO 🙈
-  </button>
+</section>
 
-  <div id="answer"></div>
-
-  <p style="margin-top:25px">
-    With lots of love,<br>
-    <b>Yours, Rimpa ❤️</b>
-  </p>
-</div>
 
 <script>
-function yesAnswer() {
-  document.getElementById("answer").innerHTML =
-  "YAYYYY! ❤️🥹 Parth, you made Rimpa the happiest person! I love you! 💕";
+
+/* CHANGE SCENES */
+
+function showScene(id) {
+  document.querySelectorAll(".scene").forEach(scene => {
+    scene.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
 }
 
-function noAnswer() {
-  document.getElementById("answer").innerHTML =
-  "It's okay, Parth ❤️ Your happiness matters to me. 🥰";
+
+/* DOOR ANIMATION */
+
+function openDoors() {
+
+  startMusic();
+
+  const doors = document.getElementById("doorStage");
+
+  doors.classList.add("open");
+
+  setTimeout(() => {
+    showScene("proposal");
+    makeHearts();
+  }, 2200);
+
 }
 
-setInterval(() => {
+
+/* ORIGINAL SOFT PIANO-STYLE MELODY */
+
+let audioContext;
+let musicTimer;
+let musicPlaying = false;
+let noteIndex = 0;
+
+const melody = [
+  [261.63,329.63,392.00],
+  [293.66,349.23,440.00],
+  [261.63,329.63,392.00],
+  [220.00,293.66,349.23],
+  [246.94,329.63,392.00],
+  [293.66,369.99,440.00],
+  [261.63,329.63,392.00],
+  [220.00,293.66,329.63]
+];
+
+function playNote(frequency, startTime, duration) {
+
+  if (!audioContext) return;
+
+  const oscillator = audioContext.createOscillator();
+  const gain = audioContext.createGain();
+
+  oscillator.type = "sine";
+  oscillator.frequency.value = frequency;
+
+  gain.gain.setValueAtTime(0.0001,startTime);
+  gain.gain.exponentialRampToValueAtTime(0.09,startTime + 0.025);
+  gain.gain.exponentialRampToValueAtTime(0.0001,startTime + duration);
+
+  oscillator.connect(gain);
+  gain.connect(audioContext.destination);
+
+  oscillator.start(startTime);
+  oscillator.stop(startTime + duration + 0.05);
+}
+
+function startMusic() {
+
+  if (musicPlaying) return;
+
+  try {
+
+    audioContext = audioContext ||
+      new (window.AudioContext || window.webkitAudioContext)();
+
+    audioContext.resume();
+
+    musicPlaying = true;
+    document.getElementById("musicBtn").innerText = "♫ Music ON";
+
+    musicTimer = setInterval(() => {
+
+      if (!musicPlaying) return;
+
+      const chord = melody[noteIndex % melody.length];
+      const now = audioContext.currentTime;
+
+      chord.forEach((frequency,i) => {
+        playNote(frequency,now + i * 0.12,1.1);
+      });
+
+      noteIndex++;
+
+    },1400);
+
+  } catch(error) {
+    console.log("Audio is not available in this browser.");
+  }
+
+}
+
+function stopMusic() {
+  musicPlaying = false;
+  clearInterval(musicTimer);
+  document.getElementById("musicBtn").innerText = "♫ Music OFF";
+}
+
+function toggleMusic() {
+  if (musicPlaying) {
+    stopMusic();
+  } else {
+    startMusic();
+  }
+}
+
+
+/* FLOATING HEARTS */
+
+function makeHearts() {
+
+  const emojis = ["❤️","💕","💗","💖","🌸","💞"];
+
   const heart = document.createElement("div");
-  heart.className = "floating";
-  heart.innerHTML = ["❤️","💕","💖","💗"][Math.floor(Math.random()*4)];
+  heart.className = "floating-heart";
+  heart.innerText = emojis[Math.floor(Math.random()*emojis.length)];
   heart.style.left = Math.random()*100 + "vw";
-  heart.style.fontSize = (20+Math.random()*20) + "px";
+  heart.style.fontSize = (18 + Math.random()*25) + "px";
+  heart.style.animationDuration = (5 + Math.random()*5) + "s";
+
   document.body.appendChild(heart);
-  setTimeout(() => heart.remove(),7000);
-},500);
+
+  setTimeout(() => heart.remove(),10000);
+}
+
+let heartTimer = setInterval(makeHearts,700);
+
+
+/* PLAYFUL NO BUTTON - STILL CLICKABLE */
+
+let noCount = 0;
+
+function moveNoButton() {
+
+  const area = document.getElementById("buttonsArea");
+  const button = document.getElementById("noBtn");
+
+  const maxX = Math.max(0,area.clientWidth - button.offsetWidth);
+  const maxY = Math.max(0,area.clientHeight - button.offsetHeight);
+
+  button.style.left = Math.random()*maxX + "px";
+  button.style.top = Math.random()*maxY + "px";
+
+}
+
+function sayNo() {
+
+  noCount++;
+
+  const messages = [
+    "Are you sure, Parth? 🥺",
+    "Rimpa is sending you one more heart! ❤️",
+    "Think again, my favourite person! 🙈",
+    "Whatever your answer, you are special to me. 💗"
+  ];
+
+  document.getElementById("noMessage").innerText =
+    messages[(noCount-1) % messages.length];
+
+  moveNoButton();
+
+}
+
+
+/* YES - ROMANTIC CELEBRATION */
+
+function sayYes() {
+
+  stopMusic();
+  startMusic();
+
+  showScene("celebration");
+
+  for (let i=0;i<100;i++) {
+    setTimeout(makeConfetti,i*30);
+  }
+
+}
+
+function makeConfetti() {
+
+  const pieces = ["❤️","💖","💕","🌹","✨","💗","💍"];
+
+  const item = document.createElement("div");
+
+  item.className = "confetti";
+  item.innerText = pieces[Math.floor(Math.random()*pieces.length)];
+
+  item.style.left = Math.random()*100 + "vw";
+  item.style.fontSize = (18 + Math.random()*30) + "px";
+  item.style.animationDuration = (2 + Math.random()*4) + "s";
+
+  document.body.appendChild(item);
+
+  setTimeout(() => item.remove(),7000);
+
+}
+
+function makeMoreHearts() {
+  for (let i=0;i<50;i++) {
+    setTimeout(makeConfetti,i*50);
+  }
+}
+
 </script>
 
 </body>
 </html>
-
